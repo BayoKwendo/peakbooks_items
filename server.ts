@@ -12,10 +12,12 @@ let task = cron('*/.5 * * * * *', async () => {
   stop();
   const days = await userService.checkUsersTrials();
 
-  if (days != undefined) {
-    console.log(days.email)
+  console.log(days.days)
 
-    if (days.days == 47 && days.reminder == 0) {
+  if (days) {
+
+    if (days.days > 7 && days.reminder == 0) {
+
       const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/sendTrialPlanReminder.php', {
         method: 'POST',
         headers: {
@@ -30,7 +32,8 @@ let task = cron('*/.5 * * * * *', async () => {
       if (postRequest) {
         const upDateUser = await userService.updateReminder({
           client_id: days.id,
-          reminder: 1
+          reminder: 1,
+          checked: 0
         });
         if (upDateUser) {
           // start();
@@ -45,49 +48,50 @@ let task = cron('*/.5 * * * * *', async () => {
               days: days.days
             })
           })
-          if(postRequest){
+          if (postRequest) {
 
             console.log("hellodcccdd")
             start();
           }
         } else {
           start();
-          console.log("helloddrrrd")
+          // console.log("helloddrrrd")
         }
       } else {
-         start();
+        start();
         console.log("helloddd")
       }
     } else if (days.days == 7 && days.reminder == 1) {
 
       const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/sendTrialPlanReminder.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            company_name: days.company_name,
-            email: days.email,
-            days: days.days
-          })
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          company_name: days.company_name,
+          email: days.email,
+          days: days.days
         })
-        if (postRequest) {
-          const upDateUser = await userService.updateReminder({
-            client_id: days.id,
-            reminder: 2
-          });
-          if (upDateUser) {
-            start();
-            console.log("hellodcccdd")
-          } else {
-            start();
-            console.log("helloddrrrd")
-          }
+      })
+      if (postRequest) {
+        const upDateUser = await userService.updateReminder({
+          client_id: days.id,
+          reminder: 2,
+          checked: 0
+        });
+        if (upDateUser) {
+          start();
+          console.log("hellodcccdd")
         } else {
-           start();
-          console.log("helloddd")
+          start();
+          console.log("helloddrrrd")
         }
+      } else {
+        start();
+        console.log("helloddd")
       }
+    }
 
     else if (days.days == 1 && days.reminder == 2) {
 
@@ -105,7 +109,8 @@ let task = cron('*/.5 * * * * *', async () => {
       if (postRequest) {
         const upDateUser = await userService.updateReminder({
           client_id: days.id,
-          reminder: 5
+          reminder: 4,
+          checked: 0
         });
         if (upDateUser) {
           start();
@@ -115,20 +120,52 @@ let task = cron('*/.5 * * * * *', async () => {
           console.log("helloddrrrd")
         }
       } else {
-         start();
-        console.log("helloddd")
+
+        start();
       }
     }
-     
-  } else {
-      
-    let days = await userService.checkUsersPlans();
+    else {
 
-    if (days != undefined) {
+      if (days.days == 16 || days.days == 8 || days.days == 2) {
+        const upDateUser = await userService.updateReminder({
+          client_id: days.id,
+          reminder: 0,
+          checked: 0
+        });
+        if (upDateUser) {
+          start();
+          console.log("hellodcccdd")
+        } else {
+          start();
+          console.log("helloddrrrd")
+        }
+      } else {
+        
+        const upDateUser = await userService.updateReminder({
+          client_id: days.id,
+          reminder: 4,
+          checked: 0
+        });
+        if (upDateUser) {
+          start();
+          console.log("hellodcccdd")
+        } else {
+          start();
+          console.log("helloddrrrd")
+        }
+      }
+    }
+  }
 
-      console.log(days.email)
+  else {
 
+
+    const days = await userService.checkUsersPlans();
+
+    if (days) {
+      // console.log(days.email)
       if (days.days == 15 && days.reminder == 4) {
+
         const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/sendTrialReminder.php', {
           method: 'POST',
           headers: {
@@ -143,7 +180,8 @@ let task = cron('*/.5 * * * * *', async () => {
         if (postRequest) {
           const upDateUser = await userService.updateReminder({
             client_id: days.id,
-            reminder: 5
+            reminder: 5,
+            checked: 0
           });
           if (upDateUser) {
             start();
@@ -172,7 +210,8 @@ let task = cron('*/.5 * * * * *', async () => {
         if (postRequest) {
           const upDateUser = await userService.updateReminder({
             client_id: days.id,
-            reminder: 6
+            reminder: 6,
+            checked: 0
           });
           if (upDateUser) {
             start();
@@ -202,7 +241,8 @@ let task = cron('*/.5 * * * * *', async () => {
         if (postRequest) {
           const upDateUser = await userService.updateReminder({
             client_id: days.id,
-            reminder: 7
+            reminder: 7,
+            checked: 0
           });
           if (upDateUser) {
             start();
@@ -213,18 +253,46 @@ let task = cron('*/.5 * * * * *', async () => {
           }
         } else {
           start();
-          console.log("helloddd")
         }
+      } else {
+
+        if (days.days == 16 || days.days == 8 || days.days == 2) {
+          const upDateUser = await userService.updateReminder({
+            client_id: days.id,
+            reminder: 4,
+            checked: 0
+          });
+          if (upDateUser) {
+            start();
+            console.log("hellodcccdd")
+          } else {
+            start();
+            console.log("helloddrrrd")
+          }
+        } else {
+
+          const upDateUser = await userService.updateReminder({
+            client_id: days.id,
+            reminder: 7,
+            checked: 0
+          });
+          if (upDateUser) {
+            start();
+            console.log("hellodcccdd")
+          } else {
+            start();
+            console.log("helloddrrrd")
+          }
+        }
+        // start();
       }
 
     } else {
 
+      const days = await userService.checkUsersAccountPlansExpiry();
 
-      //acount reminder
+      if (days) {
 
-      let days = await userService.checkUsersAccountPlansExpiry();
-
-      if (days != undefined) {
         console.log(days.email)
 
         if (days.days == 7 && days.reminder == 7) {
@@ -242,7 +310,8 @@ let task = cron('*/.5 * * * * *', async () => {
           if (postRequest) {
             const upDateUser = await userService.updateReminder({
               client_id: days.id,
-              reminder: 8
+              reminder: 8,
+              checked: 0
             });
             if (upDateUser) {
               start();
@@ -271,7 +340,8 @@ let task = cron('*/.5 * * * * *', async () => {
           if (postRequest) {
             const upDateUser = await userService.updateReminder({
               client_id: days.id,
-              reminder: 9
+              reminder: 9,
+              checked: 0
             });
             if (upDateUser) {
               start();
@@ -301,7 +371,8 @@ let task = cron('*/.5 * * * * *', async () => {
           if (postRequest) {
             const upDateUser = await userService.updateReminder({
               client_id: days.id,
-              reminder: 10
+              reminder: 10,
+              checked: 0
             });
             if (upDateUser) {
               start();
@@ -331,7 +402,8 @@ let task = cron('*/.5 * * * * *', async () => {
           if (postRequest) {
             const upDateUser = await userService.updateReminder({
               client_id: days.id,
-              reminder: 11
+              reminder: 11,
+              checked: 0
             });
             if (upDateUser) {
               start();
@@ -344,15 +416,43 @@ let task = cron('*/.5 * * * * *', async () => {
             start();
             console.log("helloddd")
           }
+        } else {
+
+          if (days.days == 6 || days.days == 14 || days.days == 20 || days.days == 29) {
+            const upDateUser = await userService.updateReminder({
+              client_id: days.id,
+              reminder: 7,
+              checked: 0,
+            });
+            if (upDateUser) {
+              start();
+              console.log("hellodcccdd")
+            } else {
+              start();
+              console.log("helloddrrrd")
+            }
+          } else {
+
+            const upDateUser = await userService.updateReminder({
+              client_id: days.id,
+              reminder: 11,
+              checked: 0,
+            });
+            if (upDateUser) {
+              start();
+              console.log("hellodcccdd")
+            } else {
+              start();
+              console.log("helloddrrrd")
+            }
+          }
         }
       } else {
 
 
-        //acount trial reminder
+        const days = await userService.checkUsersTrialAfterExpiry();
 
-        let days = await userService.checkUsersTrialAfterExpiry();
-
-        if (days != undefined) {
+        if (days) {
           console.log(days.email)
 
           if (days.days == 7 && days.reminder == 11) {
@@ -370,7 +470,8 @@ let task = cron('*/.5 * * * * *', async () => {
             if (postRequest) {
               const upDateUser = await userService.updateReminder({
                 client_id: days.id,
-                reminder: 12
+                reminder: 12,
+                checked: 0
               });
               if (upDateUser) {
                 start();
@@ -399,7 +500,8 @@ let task = cron('*/.5 * * * * *', async () => {
             if (postRequest) {
               const upDateUser = await userService.updateReminder({
                 client_id: days.id,
-                reminder: 13
+                reminder: 13,
+                checked: 0
               });
               if (upDateUser) {
                 start();
@@ -415,6 +517,7 @@ let task = cron('*/.5 * * * * *', async () => {
           }
 
           else if (days.days == 21 && days.reminder == 13) {
+
             const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/expiryReminderAfterTrial.php', {
               method: 'POST',
               headers: {
@@ -429,7 +532,8 @@ let task = cron('*/.5 * * * * *', async () => {
             if (postRequest) {
               const upDateUser = await userService.updateReminder({
                 client_id: days.id,
-                reminder: 14
+                reminder: 14,
+                checked: 0
               });
               if (upDateUser) {
                 start();
@@ -459,7 +563,8 @@ let task = cron('*/.5 * * * * *', async () => {
             if (postRequest) {
               const upDateUser = await userService.updateReminder({
                 client_id: days.id,
-                reminder: 15
+                reminder: 15,
+                checked: 1
               });
               if (upDateUser) {
                 start();
@@ -472,18 +577,46 @@ let task = cron('*/.5 * * * * *', async () => {
               start();
               console.log("helloddd")
             }
+          } else {
+            start();
           }
-        } else{
+        } else {
 
+          if (days.days == 6 || days.days == 14 || days.days == 20 || days.days == 29) {
+            const upDateUser = await userService.updateReminder({
+              client_id: days.id,
+              reminder: 11,
+              checked: 0
+            });
+            if (upDateUser) {
+              start();
+              console.log("hellodcccdd")
+            } else {
+              start();
+              console.log("helloddrrrd")
+            }
+          } else {
+
+            const upDateUser = await userService.updateReminder({
+              client_id: days.id,
+              reminder: 0,
+              checked: 0
+            });
+            if (upDateUser) {
+              start();
+              console.log("hellodcccdd")
+            } else {
+              start();
+              console.log("helloddrrrd")
+            }
+          }          // start();
           //continues ,,,,,
         }
 
       }
 
-
-
-
     }
+    console.log("gg")
   }
 
 

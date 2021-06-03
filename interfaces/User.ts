@@ -8,8 +8,10 @@ export default interface User {
   company_name?: string,
   postal_address?: string,
   reminder?:number,
+  checked?: number,
+
   offset?:number,
-  client_id?:any,
+  client_id?: any,
   filter_value?:any,
   password?: string,
   id?:string
