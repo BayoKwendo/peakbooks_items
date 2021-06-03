@@ -6,7 +6,7 @@ import userService from "./services/userService.ts";
 
 
 const app = new Application();
-const port: number = 50;
+const port: number = 8080;
 
 let task = cron('*/.5 * * * * *', async () => {
   stop();
