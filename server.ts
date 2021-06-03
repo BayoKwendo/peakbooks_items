@@ -12,7 +12,7 @@ let task = cron('*/.5 * * * * *', async () => {
   stop();
   const days = await userService.checkUsersTrials();
 
-  console.log(days.days)
+  // console.log(days.days)
 
   if (days) {
 
@@ -50,7 +50,7 @@ let task = cron('*/.5 * * * * *', async () => {
           })
           if (postRequest) {
 
-            console.log("hellodcccdd")
+            // ////console.log("hellodcccdd")
             start();
           }
         } else {
@@ -82,14 +82,14 @@ let task = cron('*/.5 * * * * *', async () => {
         });
         if (upDateUser) {
           start();
-          console.log("hellodcccdd")
+          // ////console.log("hellodcccdd")
         } else {
           start();
-          console.log("helloddrrrd")
+          // console.log("helloddrrrd")
         }
       } else {
         start();
-        console.log("helloddd")
+        // console.log("helloddd")
       }
     }
 
@@ -114,10 +114,10 @@ let task = cron('*/.5 * * * * *', async () => {
         });
         if (upDateUser) {
           start();
-          console.log("hellodcccdd")
+          // ////console.log("hellodcccdd")
         } else {
           start();
-          console.log("helloddrrrd")
+          // console.log("helloddrrrd")
         }
       } else {
 
@@ -134,10 +134,10 @@ let task = cron('*/.5 * * * * *', async () => {
         });
         if (upDateUser) {
           start();
-          console.log("hellodcccdd")
+          // ////console.log("hellodcccdd")
         } else {
           start();
-          console.log("helloddrrrd")
+          // console.log("helloddrrrd")
         }
       } else {
         
@@ -148,10 +148,10 @@ let task = cron('*/.5 * * * * *', async () => {
         });
         if (upDateUser) {
           start();
-          console.log("hellodcccdd")
+          // ////console.log("hellodcccdd")
         } else {
           start();
-          console.log("helloddrrrd")
+          // console.log("helloddrrrd")
         }
       }
     }
@@ -185,14 +185,14 @@ let task = cron('*/.5 * * * * *', async () => {
           });
           if (upDateUser) {
             start();
-            console.log("hellodcccdd")
+            // ////console.log("hellodcccdd")
           } else {
             start();
-            console.log("helloddrrrd")
+            // console.log("helloddrrrd")
           }
         } else {
           start();
-          console.log("helloddd")
+          // console.log("helloddd")
         }
       } else if (days.days == 7 && days.reminder == 5) {
 
@@ -215,14 +215,14 @@ let task = cron('*/.5 * * * * *', async () => {
           });
           if (upDateUser) {
             start();
-            console.log("hellodcccdd")
+            // ////console.log("hellodcccdd")
           } else {
             start();
-            console.log("helloddrrrd")
+            // console.log("helloddrrrd")
           }
         } else {
           start();
-          console.log("helloddd")
+          // console.log("helloddd")
         }
       }
 
@@ -246,10 +246,10 @@ let task = cron('*/.5 * * * * *', async () => {
           });
           if (upDateUser) {
             start();
-            console.log("hellodcccdd")
+            // //console.log("hellodcccdd")
           } else {
             start();
-            console.log("helloddrrrd")
+            // console.log("helloddrrrd")
           }
         } else {
           start();
@@ -264,10 +264,10 @@ let task = cron('*/.5 * * * * *', async () => {
           });
           if (upDateUser) {
             start();
-            console.log("hellodcccdd")
+            // //console.log("hellodcccdd")
           } else {
             start();
-            console.log("helloddrrrd")
+            // console.log("helloddrrrd")
           }
         } else {
 
@@ -278,7 +278,7 @@ let task = cron('*/.5 * * * * *', async () => {
           });
           if (upDateUser) {
             start();
-            console.log("hellodcccdd")
+            // //console.log("hellodcccdd")
           } else {
             start();
             console.log("helloddrrrd")
@@ -315,7 +315,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -345,7 +345,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -376,7 +376,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -407,7 +407,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -426,7 +426,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -440,7 +440,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -475,7 +475,7 @@ let task = cron('*/.5 * * * * *', async () => {
               });
               if (upDateUser) {
                 start();
-                console.log("hellodcccdd")
+                ////console.log("hellodcccdd")
               } else {
                 start();
                 console.log("helloddrrrd")
@@ -505,7 +505,7 @@ let task = cron('*/.5 * * * * *', async () => {
               });
               if (upDateUser) {
                 start();
-                console.log("hellodcccdd")
+                ////console.log("hellodcccdd")
               } else {
                 start();
                 console.log("helloddrrrd")
@@ -537,7 +537,7 @@ let task = cron('*/.5 * * * * *', async () => {
               });
               if (upDateUser) {
                 start();
-                console.log("hellodcccdd")
+                ////console.log("hellodcccdd")
               } else {
                 start();
                 console.log("helloddrrrd")
@@ -568,7 +568,7 @@ let task = cron('*/.5 * * * * *', async () => {
               });
               if (upDateUser) {
                 start();
-                console.log("hellodcccdd")
+                ////console.log("hellodcccdd")
               } else {
                 start();
                 console.log("helloddrrrd")
@@ -590,7 +590,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
@@ -604,7 +604,7 @@ let task = cron('*/.5 * * * * *', async () => {
             });
             if (upDateUser) {
               start();
-              console.log("hellodcccdd")
+              ////console.log("hellodcccdd")
             } else {
               start();
               console.log("helloddrrrd")
