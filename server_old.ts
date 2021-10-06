@@ -10,7 +10,7 @@ const port: number = 8080;
 
 cron('*/.5 * * * * *', async () => {
   stop();
-  // console.log(green('Cron job stopped'));
+  console.log(green('Cron job stopped'));
   const day = await userService.checkUsersTrials();
 
   console.log(day.days)
@@ -18,6 +18,7 @@ cron('*/.5 * * * * *', async () => {
   if (day.length > 0) {
 
     let days = day[0];
+
     if (days.days === 15 && days.reminder === 0) {
       console.log("fffhf")
       await fetch('https://www.peakbooks.biz:9000/insightphp/sendTrialPlanReminder.php', {
@@ -149,7 +150,6 @@ cron('*/.5 * * * * *', async () => {
           days: Math.abs(days.days)
         })
       })
-      console.log("hr")
       if (postRequest) {
         const upDateUser = await userService.updateReminder({
           client_id: days.id,
@@ -211,7 +211,7 @@ cron('*/.5 * * * * *', async () => {
       if (postRequest) {
         const upDateUser = await userService.updateReminder({
           client_id: days.id,
-          reminder: 8,
+          reminder: 7,
           checked: 1
         });
         if (upDateUser) {
@@ -226,12 +226,10 @@ cron('*/.5 * * * * *', async () => {
     } else {
       // check reminder if incase it was escaped
       if (days.days >= 16) {
-
-        console.log("helloddd")
         await userService.updateReminder({
           client_id: days.id,
           reminder: 0,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -239,7 +237,7 @@ cron('*/.5 * * * * *', async () => {
         await userService.updateReminder({
           client_id: days.id,
           reminder: 1,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -247,7 +245,7 @@ cron('*/.5 * * * * *', async () => {
         await userService.updateReminder({
           client_id: days.id,
           reminder: 2,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -256,7 +254,7 @@ cron('*/.5 * * * * *', async () => {
         await userService.updateReminder({
           client_id: days.id,
           reminder: 3,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -264,7 +262,7 @@ cron('*/.5 * * * * *', async () => {
         await userService.updateReminder({
           client_id: days.id,
           reminder: 4,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -272,7 +270,7 @@ cron('*/.5 * * * * *', async () => {
         await userService.updateReminder({
           client_id: days.id,
           reminder: 5,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -281,7 +279,7 @@ cron('*/.5 * * * * *', async () => {
         await userService.updateReminder({
           client_id: days.id,
           reminder: 6,
-          checked: 1
+          checked: 0
         });
         start();
       }
@@ -300,7 +298,7 @@ cron('*/.5 * * * * *', async () => {
   else {
     const day = await userService.checkUsersPlans();
     if (day.length > 0) {
-      // console.log("Days")
+      console.log(day.days)
       let days = day[0];
       // console.log(days.email)
       if (days.days == 15 && days.reminder == 8) {
@@ -319,7 +317,7 @@ cron('*/.5 * * * * *', async () => {
           const upDateUser = await userService.updateReminder({
             client_id: days.id,
             reminder: 9,
-            checked: 1
+            checked: 0
           });
           if (upDateUser) {
             start();
@@ -345,7 +343,7 @@ cron('*/.5 * * * * *', async () => {
           const upDateUser = await userService.updateReminder({
             client_id: days.id,
             reminder: 10,
-            checked: 1
+            checked: 0
           });
           if (upDateUser) {
             start();
@@ -372,7 +370,7 @@ cron('*/.5 * * * * *', async () => {
           const upDateUser = await userService.updateReminder({
             client_id: days.id,
             reminder: 11,
-            checked: 1
+            checked: 0
           });
           if (upDateUser) {
             start();
@@ -382,7 +380,123 @@ cron('*/.5 * * * * *', async () => {
         } else {
           start();
         }
-      } else {
+      }
+
+      else if (days.days == -7 && days.reminder == 11) {
+        const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            company_name: days.company_name,
+            email: days.email,
+            days: Math.abs(days.days)
+          })
+        })
+        if (postRequest) {
+          const upDateUser = await userService.updateReminder({
+            client_id: days.id,
+            reminder: 12,
+            checked: 0
+          });
+          if (upDateUser) {
+            start();
+          } else {
+            start();
+          }
+        } else {
+          start();
+          // console.log("helloddd")
+        }
+      }
+      else if (days.days == -15 && days.reminder == 12) {
+        const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            company_name: days.company_name,
+            email: days.email,
+            days: Math.abs(days.days)
+          })
+        })
+        if (postRequest) {
+          const upDateUser = await userService.updateReminder({
+            client_id: days.id,
+            reminder: 13,
+            checked: 0
+          });
+          if (upDateUser) {
+            start();
+          } else {
+            start();
+          }
+        } else {
+          start();
+          // console.log("helloddd")
+        }
+      }
+
+      else if (days.days == -21 && days.reminder == 13) {
+        const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            company_name: days.company_name,
+            email: days.email,
+            days: Math.abs(days.days)
+          })
+        })
+        if (postRequest) {
+          const upDateUser = await userService.updateReminder({
+            client_id: days.id,
+            reminder: 14,
+            checked: 0
+          });
+          if (upDateUser) {
+            start();
+          } else {
+            start();
+          }
+        } else {
+          start();
+          // console.log("helloddd")
+        }
+      }
+
+      else if (days.days == -30 && days.reminder == 14) {
+        const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            company_name: days.company_name,
+            email: days.email,
+            days: Math.abs(days.days)
+          })
+        })
+        if (postRequest) {
+          const upDateUser = await userService.updateReminder({
+            client_id: days.id,
+            reminder: 15,
+            checked: 0
+          });
+          if (upDateUser) {
+            start();
+          } else {
+            start();
+          }
+        } else {
+          start();
+          // console.log("helloddd")
+        }
+      }
+      else {
 
         // check reminder if incase it was escaped
         if (days.days >= 16) {
@@ -408,187 +522,56 @@ cron('*/.5 * * * * *', async () => {
             checked: 1
           });
           start();
-        } else {
-          await userService.updateReminderChecked({
+        }
+
+        else if (days.days >= -6 && days.days <= 0) {
+          await userService.updateReminder({
             client_id: days.id,
-            // reminder: 11,
+            reminder: 11,
             checked: 1
           });
-          console.log("helloddd")
-        
           start();
         }
-        // console.log("gg")
-      }
-    }
-    else {
-      const day = await userService.checkUsersPlansExpiry();
-      if (day.length > 0) {
-        console.log(day)
-        let days = day[0];
-        if (days.days == -7 && days.reminder == 11) {
-          const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              company_name: days.company_name,
-              email: days.email,
-              days: Math.abs(days.days)
-            })
-          })
-          if (postRequest) {
-            const upDateUser = await userService.updateReminder({
-              client_id: days.id,
-              reminder: 12,
-              checked: 1
-            });
-            if (upDateUser) {
-              start();
-            } else {
-              start();
-            }
-          } else {
-            start();
-            // console.log("helloddd")
-          }
+        else if (days.days >= -14 && days.days <= -8) {
+          await userService.updateReminder({
+            client_id: days.id,
+            reminder: 12,
+            checked: 1
+          });
+          start();
         }
-        else if (days.days == -15 && days.reminder == 12) {
-          const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              company_name: days.company_name,
-              email: days.email,
-              days: Math.abs(days.days)
-            })
-          })
-          if (postRequest) {
-            const upDateUser = await userService.updateReminder({
-              client_id: days.id,
-              reminder: 13,
-              checked: 1
-            });
-            if (upDateUser) {
-              start();
-            } else {
-              start();
-            }
-          } else {
-            start();
-            // console.log("helloddd")
-          }
+        else if (days.days >= -20 && days.days <= -16) {
+          await userService.updateReminder({
+            client_id: days.id,
+            reminder: 13,
+            checked: 1
+          });
+          start();
         }
 
-        else if (days.days == -21 && days.reminder == 13) {
-          const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              company_name: days.company_name,
-              email: days.email,
-              days: Math.abs(days.days)
-            })
-          })
-          if (postRequest) {
-            const upDateUser = await userService.updateReminder({
-              client_id: days.id,
-              reminder: 14,
-              checked: 1
-            });
-            if (upDateUser) {
-              start();
-            } else {
-              start();
-            }
-          } else {
-            start();
-            // console.log("helloddd")
-          }
-        }
-
-        else if (days.days == -30 && days.reminder == 14) {
-          const postRequest = await fetch('https://www.peakbooks.biz:9000/insightphp/accountPaidReminder.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              company_name: days.company_name,
-              email: days.email,
-              days: Math.abs(days.days)
-            })
-          })
-          if (postRequest) {
-            const upDateUser = await userService.updateReminder({
-              client_id: days.id,
-              reminder: 15,
-              checked: 1
-            });
-            if (upDateUser) {
-              start();
-            } else {
-              start();
-            }
-          } else {
-            start();
-            // console.log("helloddd")
-          }
+        else if (days.days >= -29 && days.days <= -22) {
+          await userService.updateReminder({
+            client_id: days.id,
+            reminder: 14,
+            checked: 1
+          });
+          start();
         }
         else {
-          if (days.days >= -6 && days.days <= 0) {
-            await userService.updateReminder({
-              client_id: days.id,
-              reminder: 11,
-              checked: 1
-            });
-            start();
-          }
-          else if (days.days >= -14 && days.days <= -8) {
-            await userService.updateReminder({
-              client_id: days.id,
-              reminder: 12,
-              checked: 1
-            });
-            start();
-          }
-          else if (days.days >= -20 && days.days <= -16) {
-            await userService.updateReminder({
-              client_id: days.id,
-              reminder: 13,
-              checked: 1
-            });
-            start();
-          }
-
-          else if (days.days >= -200 && days.days <= -22) {
-            await userService.updateReminder({
-              client_id: days.id,
-              reminder: 14,
-              checked: 1
-            });
-            start();
-          }
-          else {
-            await userService.updateReminderChecked({
-              client_id: days.id,
-              // reminder: 11,
-              checked: 1
-            });
-            console.log("helloddd")
-            start();
-          }
+          await userService.updateReminderChecked({
+            client_id: days.id,
+            // reminder: 8,
+            checked: 1
+          });
+          // console.log("helloddd")
+          start();
         }
-      } else {
-        start();
       }
+    } else {
+      start();
     }
   }
+  // console.log("gg")
 });
 
 app.addEventListener("error", (evt) => {

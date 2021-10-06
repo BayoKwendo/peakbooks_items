@@ -4,6 +4,9 @@ services:
   web:
     restart: always
     build: .
-    container_name: API
+    network_mode: host
+    # command: ["run", "--allow-env", "--allow-net", "--unstable", "server.ts"]
+    container_name: send_notification
     ports:
-      - "8090:8090"
+      - "8080:8080"
+      
