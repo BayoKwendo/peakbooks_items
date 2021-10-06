@@ -6,6 +6,6 @@ services:
     build: .
     # command: ["run", "--allow-env", "--allow-net", "--unstable", "server.ts"]
     container_name: send_notification
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8080:8080"
       
