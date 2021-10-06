@@ -4,6 +4,7 @@ services:
   web:
     restart: always
     build: .
+    network_mode: host
     # command: ["run", "--allow-env", "--allow-net", "--unstable", "server.ts"]
     container_name: send_notification
     # ports:
