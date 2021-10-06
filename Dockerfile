@@ -13,6 +13,7 @@ USER deno
 
 ADD . .
 
+
 RUN deno cache --unstable server.ts
 
 CMD [ "run", "--unstable", "--allow-net", "--allow-env", "--watch", "--allow-read", "server.ts" ]
