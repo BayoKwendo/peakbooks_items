@@ -1,4 +1,15 @@
 export const DATABASE: string = "Insight";
+
+
+export const MYSQL = {
+  host: "157.230.229.119",
+  user: "root",
+  password: "part@^yr9053",
+  database: "peakbooks",
+  port: 3306
+}
+
+
 export const TABLE = {
   CUSTOMER: "customers",
   CUSTOMER_MORE: "customers_more",
@@ -25,8 +36,6 @@ export const TABLE = {
   RECURRING_EXPENSE: "recurring_expenses",
   BILLS: "billings",
   RECURRING_BILLS: 'recurring_bills'
-
-
 
 
 
