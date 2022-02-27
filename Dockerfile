@@ -1,6 +1,6 @@
-FROM denoland/deno:1.15.2
+FROM denoland/deno:1.19.2
 
-EXPOSE 8080
+EXPOSE 2004
 
 WORKDIR /app
 

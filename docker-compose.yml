@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   web:
@@ -6,7 +6,6 @@ services:
     build: .
     network_mode: host
     # command: ["run", "--allow-env", "--allow-net", "--unstable", "server.ts"]
-    container_name: send_notification
+    container_name: items_updates
     # ports:
     #   - "8080:8080"
-      

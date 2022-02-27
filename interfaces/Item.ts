@@ -7,12 +7,13 @@ export default interface User {
   email?: string,
   company_name?: string,
   postal_address?: string,
-  reminder?:number,
+  reminder?: number,
   checked?: number,
-
-  offset?:number,
+  item_name?: string,
+  offset?: number,
+  item_id?: number,
   client_id?: any,
-  filter_value?:any,
+  filter_value?: any,
   password?: string,
-  id?:string
+  id?: string
 }
