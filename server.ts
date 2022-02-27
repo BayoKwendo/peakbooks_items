@@ -1,6 +1,6 @@
 import { Application, Context, Router } from "https://deno.land/x/oak/mod.ts";
 import { green, yellow } from "https://deno.land/std@0.53.0/fmt/colors.ts";
-import { cron, start, stop, everySecond, everyMinute, daily, weekly } from 'https://deno.land/x/deno_cron/cron.ts';
+import { cron, start, stop, everyMinute, daily, weekly } from 'https://deno.land/x/deno_cron/cron.ts';
 import itemService from "./services/itemService.ts";
 
 
@@ -8,7 +8,7 @@ const app = new Application();
 const port: number = 2004;
 
 
-everySecond(async () => {
+cron("*/10 * * * * *", async () => {
   stop();
   // invoice items
   const invoice_items = await itemService.checkItemInvoice();
