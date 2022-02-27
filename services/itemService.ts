@@ -7,7 +7,7 @@ export default {
   //CHECK ITEMS INVOICES WITH STATUS 0 
   checkItemInvoice: async () => {
     const result = await client.query(
-      `SELETE * ${TABLE.INVOICE_ITEMS} WHERE status = 0 LIMIT 1`);
+      `SELECT * ${TABLE.INVOICE_ITEMS} WHERE status = 0 LIMIT 1`);
     return result;
   },
   updateItemInvoice: async ({ id, item_id }: Item) => {
@@ -19,7 +19,7 @@ export default {
   //CHECK ITEMS INVOICES WITH STATUS 0 
   checkCreditItems: async () => {
     const result = await client.query(
-      `SELETE * ${TABLE.CREDIT_ITEMS} WHERE status = 0 LIMIT 1`);
+      `SELECT * ${TABLE.CREDIT_ITEMS} WHERE status = 0 LIMIT 1`);
     return result;
   },
 
@@ -33,7 +33,7 @@ export default {
   //CHECK ITEMS bills WITH STATUS 0 
   checkBillsItems: async () => {
     const result = await client.query(
-      `SELETE * ${TABLE.BILL_ITEMS} WHERE status = 0 LIMIT 1`);
+      `SELECT * ${TABLE.BILL_ITEMS} WHERE status = 0 LIMIT 1`);
     return result;
   },
 
@@ -46,7 +46,7 @@ export default {
   //CHECK ITEMS INVOICES WITH STATUS 0 
   checkCreditVendorItems: async () => {
     const result = await client.query(
-      `SELETE * ${TABLE.CREDIT_NOTE_ITEMS} WHERE status = 0 LIMIT 1`);
+      `SELECT * ${TABLE.CREDIT_NOTE_ITEMS} WHERE status = 0 LIMIT 1`);
     return result;
   },
 
@@ -60,7 +60,7 @@ export default {
 
   checkItem: async ({ client_id, item_name }: Item) => {
     const result = await client.query(
-      `SELETE * ${TABLE.ITEMS} WHERE client_id = ?  AND item_name = ? LIMIT 1`, [client_id, item_name]);
+      `SELECT * ${TABLE.ITEMS} WHERE client_id = ?  AND item_name = ? LIMIT 1`, [client_id, item_name]);
     return result;
   },
 
