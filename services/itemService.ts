@@ -12,13 +12,13 @@ export default {
   },
   updateItemInvoice: async ({ id, item_id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.INVOICE_ITEMS} SET item_id = ? AND status = 0 WHERE id = ?`, [item_id, id]);
+      `UPDATE ${TABLE.INVOICE_ITEMS} SET item_id = ? AND status = 1 WHERE id = ?`, [item_id, id]);
     return result;
   },
 
   updateItemInvoiceStatus: async ({ id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.INVOICE_ITEMS} SET status = 0 WHERE id = ?`, [id]);
+      `UPDATE ${TABLE.INVOICE_ITEMS} SET status = 1 WHERE id = ?`, [id]);
     return result;
   },
 
@@ -33,13 +33,13 @@ export default {
 
   updateCreditInvoice: async ({ id, item_id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.CREDIT_ITEMS} SET item_id = ? AND status = 0 WHERE id = ?`, [item_id, id]);
+      `UPDATE ${TABLE.CREDIT_ITEMS} SET item_id = ? AND status = 1 WHERE id = ?`, [item_id, id]);
     return result;
   },
 
   updateItemCreditStatus: async ({ id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.CREDIT_ITEMS} SET status = 0 WHERE id = ?`, [id]);
+      `UPDATE ${TABLE.CREDIT_ITEMS} SET status = 1 WHERE id = ?`, [id]);
     return result;
   },
 
@@ -55,14 +55,14 @@ export default {
 
   updateBillsItem: async ({ id, item_id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.BILL_ITEMS} SET item_id = ? AND status = 0 WHERE id = ?`, [item_id, id]);
+      `UPDATE ${TABLE.BILL_ITEMS} SET item_id = ? AND status = 1 WHERE id = ?`, [item_id, id]);
     return result;
   },
 
 
   updateItemBillsStatus: async ({ id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.BILL_ITEMS} SET status = 0 WHERE id = ?`, [id]);
+      `UPDATE ${TABLE.BILL_ITEMS} SET status = 1 WHERE id = ?`, [id]);
     return result;
   },
 
@@ -76,14 +76,14 @@ export default {
 
   updateCreditBills: async ({ id, item_id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.CREDIT_NOTE_ITEMS} SET item_id = ? AND status = 0 WHERE id = ?`, [item_id, id]);
+      `UPDATE ${TABLE.CREDIT_NOTE_ITEMS} SET item_id = ? AND status = 1 WHERE id = ?`, [item_id, id]);
     return result;
   },
 
 
   updateItemCreditBillsStatus: async ({ id }: Item) => {
     const result = await client.query(
-      `UPDATE ${TABLE.CREDIT_NOTE_ITEMS} SET status = 0 WHERE id = ?`, [id]);
+      `UPDATE ${TABLE.CREDIT_NOTE_ITEMS} SET status = 1 WHERE id = ?`, [id]);
     return result;
   },
 
