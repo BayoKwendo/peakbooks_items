@@ -26,6 +26,12 @@ cron("*/10 * * * * *", async () => {
         item_id: items[0].id
       });
     }
+    else {
+      await itemService.updateItemInvoiceStatus({
+        id: invoice_items[0].id,
+      });
+    }
+
     start();
 
   } else {
@@ -43,6 +49,12 @@ cron("*/10 * * * * *", async () => {
           item_id: items[0].id
         });
       }
+      else {
+        await itemService.updateItemCreditStatus({
+          id: credit_items[0].id,
+        });
+      }
+
       start()
 
     } else {
@@ -61,6 +73,11 @@ cron("*/10 * * * * *", async () => {
             item_id: items[0].id
           });
         }
+        else {
+          await itemService.updateItemBillsStatus({
+            id: bills_items[0].id,
+          });
+        }
 
         start();
 
@@ -77,6 +94,11 @@ cron("*/10 * * * * *", async () => {
             await itemService.updateCreditBills({
               id: vendor_items[0].id,
               item_id: items[0].id
+            });
+          }
+          else {
+            await itemService.updateItemCreditBillsStatus({
+              id: vendor_items[0].id,
             });
           }
           start();
